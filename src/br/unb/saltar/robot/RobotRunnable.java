@@ -1,8 +1,13 @@
 package br.unb.saltar.robot;
 
 import java.awt.Robot;
+import java.util.ArrayList;
 
-public abstract class RobotRunnable implements Runnable {
+import br.unb.saltar.robot.commands.Command;
+
+public class RobotRunnable implements Runnable {
+
+	private ArrayList<Pair<Command, Long>> commands = new ArrayList<Pair<Command, Long>>();
 
 	protected Robot bot;
 
@@ -12,9 +17,37 @@ public abstract class RobotRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		RobotRunnable.this.command(bot);
+		for (Pair<Command, Long> pair : commands) {
+			try {
+				pair.getFirst().execute(bot);
+				Thread.sleep(pair.getSecond());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	protected abstract void command(Robot bot);
+	public void addCommand(Command command, long delay) {
+		commands.add(new Pair<Command, Long>(command, delay));
+	}
+
+	public void removeCommandPair(Pair<Command, Long> pair) {
+		commands.remove(pair);
+	}
+
+	public void removeCommand(Command command){
+		Pair<Command, Long> toDelete=null;
+		for (Pair<Command, Long> pair2 : commands) {
+			if(command.equals(pair2.getFirst())){
+				toDelete=pair2;
+				break;
+			}
+		}
+		commands.remove(toDelete);
+	}
+
+	public ArrayList<Pair<Command, Long>> getCommands() {
+		return commands;
+	}
 
 }

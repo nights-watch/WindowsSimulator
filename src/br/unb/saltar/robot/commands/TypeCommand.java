@@ -1,11 +1,18 @@
-package br.unb.saltar.robot.utils;
+package br.unb.saltar.robot.commands;
 
-import static java.awt.event.KeyEvent.*;
 import java.awt.Robot;
+import static java.awt.event.KeyEvent.*;
 
-public class Utils {
+
+public class TypeCommand implements Command {
 	
-	public static void type(Robot bot, String text) {
+	private String toType;
+	
+	public TypeCommand(String toType){
+		this.toType=toType;
+	}
+	
+	private void type(Robot bot, String text) {
 		for (int i = 0; i < text.length(); i++) {
 	        switch (text.charAt(i)) {
 		        case 'a': doType(bot, VK_A); break;
@@ -124,5 +131,10 @@ public class Utils {
         doType(keyCodes, offset + 1, length - 1, bot);
         bot.keyRelease(keyCodes[offset]);
     }
-    
+
+	@Override
+	public void execute(Robot bot) {
+		type(bot, toType);	
+	}
+
 }
