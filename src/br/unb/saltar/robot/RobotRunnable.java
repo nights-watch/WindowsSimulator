@@ -35,19 +35,22 @@ public class RobotRunnable implements Runnable {
 		commands.remove(pair);
 	}
 
-	public void removeCommand(Command command){
-		Pair<Command, Long> toDelete=null;
+	public void removeCommand(Command command) {
+		Pair<Command, Long> toDelete = null;
 		for (Pair<Command, Long> pair2 : commands) {
-			if(command.equals(pair2.getFirst())){
-				toDelete=pair2;
+			if (command.equals(pair2.getFirst())) {
+				toDelete = pair2;
 				break;
 			}
 		}
 		commands.remove(toDelete);
 	}
 
+	public void clearCommands(){
+		commands.clear();
+	}
+	
 	public ArrayList<Pair<Command, Long>> getCommands() {
 		return commands;
 	}
-
 }

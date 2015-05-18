@@ -81,8 +81,10 @@ public class TypeCommand implements Command {
 		        case '-': doType(bot, VK_MINUS); break;
 		        case '=': doType(bot, VK_EQUALS); break;
 		        case '~': doType(bot, VK_SHIFT, VK_BACK_QUOTE); break;
-		        case '!': doType(bot, VK_EXCLAMATION_MARK); break;
-		        case '@': doType(bot, VK_AT); break;
+		        case '!': doType(bot, VK_SHIFT, VK_1); break;
+		        //case '!': doType(bot, VK_EXCLAMATION_MARK); break;
+		        //case '@': doType(bot, VK_AT); break;
+		        case '@': doType(bot, VK_SHIFT, VK_2); break;
 		        case '#': doType(bot, VK_NUMBER_SIGN); break;
 		        case '$': doType(bot, VK_DOLLAR); break;
 		        case '%': doType(bot, VK_SHIFT, VK_5); break;

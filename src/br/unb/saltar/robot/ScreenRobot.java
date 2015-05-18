@@ -11,13 +11,12 @@ public class ScreenRobot {
 		Robot bot;
 		try {
 			bot = new Robot();
-			Thread browserSimulator = new BrowserSimulator(bot).simulate();
-			browserSimulator.join();
-			
+			new BrowserSimulator(bot).simulate().join();
 		} catch (AWTException e) {
+			// TODO handle robot exception
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// cant join
+			// TODO handle interruptedException
 			e.printStackTrace();
 		}
 	}
