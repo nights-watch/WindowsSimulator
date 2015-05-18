@@ -29,4 +29,9 @@ public abstract class Simulator{
 	protected void addCommand(Command command, long delay) {
 		robot.addCommand(command, delay);
 	}
+	protected void addMultipleCommands(Command command, long delay, int times){
+		for (int i = 0; i < times; i++) {
+			robot.addCommand(command, delay);
+		}
+	}
 }

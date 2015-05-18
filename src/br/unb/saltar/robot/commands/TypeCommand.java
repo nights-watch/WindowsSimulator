@@ -6,10 +6,19 @@ import static java.awt.event.KeyEvent.*;
 
 public class TypeCommand implements Command {
 	
-	private String toType;
+	private String toType = null;
+	private int flags = 0;
+	public static final int FULL_STRING=1;
 	
-	public TypeCommand(String toType){
+	
+	public TypeCommand(String toType, int flag){
 		this.toType=toType;
+		this.flags=flag;
+	}
+	
+	public TypeCommand(String toType) {
+		this.toType = toType;
+		this.flags = 0; 
 	}
 	
 	private void type(Robot bot, String text) {
@@ -119,6 +128,8 @@ public class TypeCommand implements Command {
 		        }
 		}
     }
+	
+	
 
     private static void doType(Robot bot, int... keyCodes) {
         doType(keyCodes, 0, keyCodes.length, bot);
@@ -136,7 +147,22 @@ public class TypeCommand implements Command {
 
 	@Override
 	public void execute(Robot bot) {
-		type(bot, toType);	
+		if((flags & FULL_STRING)==1)
+			typeKey(bot);
+		else
+			type(bot, toType);	
+	}
+
+	private void typeKey(Robot bot) {
+		if(toType.equals("down"))
+			doType(bot, VK_DOWN);
+		else if(toType.equals("up"))
+			doType(bot, VK_UP);
+		else if(toType.equals("left"))
+			doType(bot, VK_LEFT);
+		else if(toType.equals("right"))
+			doType(bot, VK_RIGHT);
+		
 	}
 
 }

@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 
 import br.unb.saltar.robot.simulations.BrowserSimulator;
+import br.unb.saltar.robot.simulations.FlashSimulator;
 
 public class ScreenRobot {
 
@@ -12,6 +13,7 @@ public class ScreenRobot {
 		try {
 			bot = new Robot();
 			new BrowserSimulator(bot).simulate().join();
+			new  FlashSimulator(bot).simulate().join();
 		} catch (AWTException e) {
 			// TODO handle robot exception
 			e.printStackTrace();
