@@ -19,7 +19,7 @@ public class FlashSimulator extends Simulator {
 						"http://jogosonline.uol.com.br/scooter-man-hd_61681.html#rmcl"),
 				10000);
 		addMultipleCommands(new TypeCommand("down", TypeCommand.FULL_STRING),
-				1000, 12);
+				1000, 11);
 		addMultipleCommands(new AbsoluteClickCommand(512, 500), 1000, 4);
 		addMultipleCommands(new TypeCommand(" "), 500, 10);
 	}
