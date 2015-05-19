@@ -14,6 +14,7 @@ public class ScreenRobot {
 			Thread.sleep(30000);
 			bot = new Robot();
 			new BrowserSimulator(bot).simulate().join();
+			Thread.sleep(5000);
 			new  FlashSimulator(bot).simulate().join();
 		} catch (AWTException e) {
 			// TODO handle robot exception
