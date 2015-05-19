@@ -11,6 +11,7 @@ public class ScreenRobot {
 	public static void main(String[] args) {
 		Robot bot;
 		try {
+			Thread.sleep(30000);
 			bot = new Robot();
 			new BrowserSimulator(bot).simulate().join();
 			new  FlashSimulator(bot).simulate().join();
