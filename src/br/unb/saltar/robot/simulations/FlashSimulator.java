@@ -17,7 +17,7 @@ public class FlashSimulator extends Simulator {
 		addCommand(
 				new OpenURICommand(
 						"http://jogosonline.uol.com.br/scooter-man-hd_61681.html#rmcl"),
-				10000);
+				15000);
 		addMultipleCommands(new TypeCommand("down", TypeCommand.FULL_STRING),
 				1000, 11);
 		addMultipleCommands(new AbsoluteClickCommand(512, 500), 1000, 4);
@@ -26,7 +26,7 @@ public class FlashSimulator extends Simulator {
 
 	@Override
 	protected void setGoBackBehavior() {
-		addCommand(new AbsoluteClickCommand(1000, 5), 100);
+		addCommand(new AbsoluteClickCommand(1000, 5), 1000);
 	}
 
 }
